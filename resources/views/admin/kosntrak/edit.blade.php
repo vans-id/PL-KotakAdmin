@@ -8,22 +8,77 @@
         <div class="card-body">
           <h5 class="card-title">Detail Kosntrak</h5>
 
-          <form action="/admin/kosntrak/{{ $kosntrak->id }}" class="mt-3" enctype="multipart/form-data" method="POST">
+          <form action="/admin/kosntrak/{{ $kosntrak->id }}" class="mt-4" enctype="multipart/form-data" method="POST">
             @csrf
             @method('PUT')
-            <input class="form-control mb-3" type="text" placeholder="Tipe (Kos/Kontrakan)" name="type" value="{{ $kosntrak->type }}">
-            <input class="form-control mb-3" type="text" placeholder="Nama Tempat" name="name" value="{{ $kosntrak->name }}">
-            <input class="form-control mb-3" type="text" placeholder="Alamat" name="address" value="{{ $kosntrak->address }}">
-            <input class="form-control mb-3" type="text" placeholder="Maps" name="maps" value="{{ $kosntrak->maps }}">
-            <textarea class="form-control mb-3" type="text" placeholder="Keterangan" name="description">
-              {{ $kosntrak->description }}
-            </textarea>
-            <input class="form-control mb-3" type="number" placeholder="Harga Sewa" name="price" value="{{ $kosntrak->price }}">
-           
-           
+
+            <div class="mb-3">
+              <input class="form-control @error('type') is-invalid @enderror" type="text" placeholder="Tipe (Kos/Kontrakan)" name="type" value="{{ $kosntrak->type }}">
+              @error('type')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+            
+            <div class="mb-3">
+              <input class="form-control @error('name') is-invalid @enderror  " type="text" placeholder="Nama Tempat" name="name" value="{{ $kosntrak->name }}">
+              @error('name')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+
+            <div class="mb-3">
+              <input class="form-control @error('address') is-invalid @enderror  " type="text" placeholder="Alamat" name="address" value="{{ $kosntrak->address }}">
+              @error('address')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+
+            <div class="mb-3">
+              <input class="form-control @error('maps') is-invalid @enderror  " type="text" placeholder="Maps" name="maps" value="{{ $kosntrak->maps }}">
+              @error('maps')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+
+            <div class="mb-3">
+              <textarea 
+              class="form-control @error('description') is-invalid @enderror " 
+              type="text" 
+              placeholder="Keterangan" 
+              name="description">{{ $kosntrak->description }}</textarea>
+              @error('description')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+
+            <div class="mb-3">
+              <input class="form-control @error('name') is-invalid @enderror " type="number" placeholder="Harga Sewa" name="price" value="{{ $kosntrak->price }}">
+              @error('price')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+
             <div class="mb-3">
               <label class="form-label" for="formFile">Gambar</label>
-              <input id='image' class="form-control" type="file" name="image" onchange="previewImage()">
+              <input id='image' class="form-control @error('image') is-invalid @enderror" type="file" name="image" 
+              onchange="previewImage()">
+              @error('image')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
 
               @if ($kosntrak->image)
               <img src="{{ asset('storage/' . $kosntrak->image) }}" class="img-preview img-fluid mt-3 col-sm-6 d-block">
@@ -33,8 +88,23 @@
               <input type="hidden" name="oldImage" value="{{ $kosntrak->image }}">
             </div>
 
-            <input class="form-control mb-3" type="text" placeholder="Status Kamar" name="bedroom" value="{{ $kosntrak->bedroom }}">
-            <input class="form-control mb-3" type="text" placeholder="Status Kamar Mandi" name="bathroom" value="{{ $kosntrak->bathroom }}">
+            <div class="mb-3">
+              <input class="form-control @error('bedroom') is-invalid @enderror" type="text" placeholder="Status Kamar" name="bedroom" value="{{ $kosntrak->bedroom }}" />
+              @error('bedroom')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+
+            <div class="mb-3">
+              <input class="form-control @error('bathroom') is-invalid @enderror" type="text" placeholder="Status Kamar Mandi" name="bathroom" value="{{ $kosntrak->bathroom }}" />
+              @error('bathroom')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
 
             <button class="btn btn-primary" type="submit">Simpan</button>
             <a href="/admin/kosntrak" class="btn btn-outline-secondary ml-3">Kembali</a>

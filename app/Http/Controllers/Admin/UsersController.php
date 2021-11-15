@@ -13,7 +13,7 @@ class UsersController extends Controller
     public function index()
     {
         return view('admin.users.index', [
-            "title" => "Kosntrak",
+            "title" => "Pengguna",
             "users" => User::whereRoleIs(['user', 'owner'])->get()
         ]);
     }
@@ -21,7 +21,7 @@ class UsersController extends Controller
     public function create()
     {
         return view('admin.users.add', [
-            "title" => "Kosntrak",
+            "title" => "Pengguna",
         ]);
     }
 

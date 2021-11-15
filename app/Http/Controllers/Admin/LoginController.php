@@ -30,7 +30,7 @@ class LoginController extends Controller
             }
         }
 
-        return back()->with('loginError', 'User dan/atau password tidak terdaftar');
+        return back()->with('loginError', 'User dan/atau password tidak terdaftar sebagai admin');
     }
 
     public function logout(Request $request)

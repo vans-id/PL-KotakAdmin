@@ -33,7 +33,7 @@ class KosntrakController extends Controller
             'maps' => 'required|min:3|max:255',
             'description' => 'required|min:3|max:255',
             'price' => 'required|min:3|max:255',
-            'image' => 'image|file|max:4096',
+            'image' => 'required|image|file|max:4096',
             'bedroom' => 'required|min:3|max:255',
             'bathroom' => 'required|min:3|max:255',
         ]);

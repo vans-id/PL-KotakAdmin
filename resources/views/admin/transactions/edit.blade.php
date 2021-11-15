@@ -26,8 +26,22 @@
             <input class="form-control mb-3" type="text" placeholder="ID Kosntrak" name="kosntrak_id">
             @endif
 
-            <input class="form-control mb-3" type="text" placeholder="Tanggal Checkin" name="start_date" value="{{ $transaction->start_date }}">
-            <input class="form-control mb-3" type="text" placeholder="Tanggal Checkout" name="end_date" value="{{ $transaction->end_date }}">
+            <div class="mb-3">
+              <input class="form-control @error('start_date') is-invalid @enderror" type="text" placeholder="Tanggal Checkin" name="start_date" value="{{ $transaction->start_date }}">
+              @error('start_date')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+            <div class="mb-3">
+              <input class="form-control @error('end_date') is-invalid @enderror" type="text" placeholder="Tanggal Checkout" name="end_date" value="{{ $transaction->end_date }}">
+              @error('end_date')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
 
             <select class="form-select mb-3" name="payment_status" >
               <option selected disabled>Status Bayar</option>

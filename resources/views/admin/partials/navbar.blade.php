@@ -8,7 +8,7 @@
     
     <div>
       <span>
-        Welcome, {{ auth()->user()->name }}
+        Selamat datang, {{ auth()->user()->name }}
       </span>
       <form action="/logout" method="POST" class="d-inline">
         @csrf
@@ -24,7 +24,7 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb my-0 ms-2">
         <li class="breadcrumb-item">
-          <!-- if breadcrumb is single--><span>Admin</span>
+          <span>Admin</span>
         </li>
         <li class="breadcrumb-item active"><span>{{ $title }}</span></li>
       </ol>

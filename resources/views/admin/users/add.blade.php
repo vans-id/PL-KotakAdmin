@@ -12,17 +12,69 @@
 
           <form action="/admin/users" class="mt-3" method="POST">
             @csrf
-            <input class="form-control mb-3" type="text" placeholder="Nama" name="name">
-            <input class="form-control mb-3" type="email" placeholder="Email" name="email">
-            <input class="form-control mb-3" type="password" placeholder="Password" name="password">
-            <input class="form-control mb-3" type="text" placeholder="Alamat" name="address">
-            <input class="form-control mb-3" type="number" placeholder="No Hp" name="phone">
+            <div class="mb-3">
+              <input class="form-control @error('name') is-invalid @enderror" type="text" placeholder="Nama" name="name">
+              @error('name')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+            <div class="mb-3">
+              <input class="form-control @error('email') is-invalid @enderror" type="email" placeholder="Email" name="email">
+              @error('email')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
 
-            <select class="form-select mb-5" name="role" >
-              <option selected disabled>Status pengguna</option>
-              <option value="owner">Pemilik</option>
-              <option value="user">Penyewa</option>
-            </select>
+            <div class="mb-3">
+              <input class="form-control @error('password') is-invalid @enderror" type="password" placeholder="Password" name="password">
+              @error('password')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+
+            <div class="mb-3">
+              <input class="form-control @error('address') is-invalid @enderror" type="text" placeholder="Alamat" name="address">
+              @error('address')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+
+            <div class="mb-3">
+              <input class="form-control @error('phone') is-invalid @enderror" type="number" placeholder="No Hp" name="phone">
+              @error('phone')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+
+            <div class="mb-3">
+              <select class="form-select @error('role') is-invalid @enderror" name="role" >
+                <option selected disabled>Status pengguna</option>
+                <option value="owner">Pemilik</option>
+                <option value="user">Penyewa</option>
+              </select>
+              @error('role')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+
+            
+            
+            
+            
+
+            
 
             <button class="btn btn-primary" type="submit">Tambah</button>
             <a href="/admin/users" class="btn btn-outline-secondary ml-3">Kembali</a>
