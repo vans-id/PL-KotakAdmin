@@ -33,7 +33,7 @@ class KosntrakController extends Controller
             'maps' => 'required|min:3|max:255',
             'description' => 'required|min:3|max:255',
             'price' => 'required|min:3|max:255',
-            'image' => 'required|image|file|max:4096',
+            'image' => 'image|file|max:4096',
             'bedroom' => 'required|min:3|max:255',
             'bathroom' => 'required|min:3|max:255',
         ]);
@@ -62,6 +62,25 @@ class KosntrakController extends Controller
 
     public function update(Request $request, Kosntrak $kosntrak)
     {
+        $data = $request->validate([
+            'type' => 'required|min:3|max:255',
+            'name' => 'required|min:3|max:255',
+            'address' => 'required|min:3|max:255',
+            'maps' => 'required|min:3|max:255',
+            'description' => 'required|min:3|max:255',
+            'price' => 'required|min:3|max:255',
+            'image' => 'image|file|max:4096',
+            'bedroom' => 'required|min:3|max:255',
+            'bathroom' => 'required|min:3|max:255',
+        ]);
+
+        if ($request->file('image')) {
+            $data['image'] = $request->file('image')->store('kosntrak-images');
+        }
+
+        Kosntrak::where('id', $kosntrak->id)
+            ->update($data);
+        return redirect('/admin/kosntrak')->with("message", "Kos/Kontrakan berhasil diperbaharui");
     }
 
     public function destroy(Kosntrak $kosntrak)

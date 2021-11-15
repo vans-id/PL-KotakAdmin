@@ -25,11 +25,11 @@
             <table class="table">
               <thead>
                 <tr>
-                  <th scope="col" style="width: 25%;">Nama Tempat</th>
+                  <th scope="col" >Nama Tempat</th>
                   <th scope="col">Jenis</th>
                   <th scope="col">Alamat</th>
-                  <th scope="col">Harga Sewa</th>
-                  <th scope="col"></th>
+                  <th scope="col" style="width: 14%;">Harga Sewa</th>
+                  <th scope="col" style="width: 18%;"></th>
                 </tr>
               </thead>
               <tbody>
@@ -38,12 +38,12 @@
                   <td>
                     {{ $k->name }}
                   </td>
-                  <td>{{ $k->type }}</td>
+                  <td>{{ strtoupper($k->type) }}</td>
                   <td>
                     {{ $k->address }}
                   </td>
                   <td>
-                    {{ $k->price }}
+                    Rp {{ number_format($k->price) }}
                   </td>
                   <td>
                     <a href="/admin/kosntrak/{{ $k->id }}/edit" class="btn btn-outline-info">
