@@ -14,6 +14,7 @@ class Transaction extends Model
     protected $fillable = [
         'kosntrak_id',
         'user_id',
+        'payment_status',
         'start_date',
         'end_date'
     ];

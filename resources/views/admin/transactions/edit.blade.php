@@ -29,6 +29,12 @@
             <input class="form-control mb-3" type="text" placeholder="Tanggal Checkin" name="start_date" value="{{ $transaction->start_date }}">
             <input class="form-control mb-3" type="text" placeholder="Tanggal Checkout" name="end_date" value="{{ $transaction->end_date }}">
 
+            <select class="form-select mb-3" name="payment_status" >
+              <option selected disabled>Status Bayar</option>
+              <option {{ $transaction->payment_status == 0 ? 'selected' : '' }} value="0">Pending</option>
+              <option {{ $transaction->payment_status == 1 ? 'selected' : '' }} value="1">Diterima</option>
+            </select>
+
             <button class="btn btn-primary" type="submit">Simpan</button>
             <a href="/admin/transactions" class="btn btn-outline-secondary ml-3">Kembali</a>
           </form>

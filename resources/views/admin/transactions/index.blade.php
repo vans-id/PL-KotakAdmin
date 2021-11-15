@@ -26,7 +26,7 @@
                 <tr>
                   <th scope="col">Nama Penyewa</th>
                   <th scope="col">Nama Kosntrak</th>
-                  <th scope="col">Status Sewa</th>
+                  <th scope="col">Status Bayar</th>
                   <th scope="col"></th>
                 </tr>
               </thead>
@@ -48,17 +48,13 @@
                     @endif
                   </td>
                   <td>
-                    @if ((time()-(60*60*24)) < strtotime($transaction->start_date))
-                    <span class="badge me-1 rounded-pill bg-info">
-                      Dipesan
-                    </span>
-                    @elseif ((time()-(60*60*24)) < strtotime($transaction->end_date))
+                    @if ($transaction->payment_status == 1)
                     <span class="badge me-1 rounded-pill bg-success">
-                      Disewa
+                      Diterima
                     </span>
                     @else
-                    <span class="badge me-1 rounded-pill bg-secondary">
-                      Selesai
+                    <span class="badge me-1 rounded-pill bg-warning">
+                      Pending
                     </span>  
                     @endif
                   </td>

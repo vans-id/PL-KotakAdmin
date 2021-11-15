@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\KosntrakController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\RegisterController;
@@ -23,9 +24,7 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     // DASHBOARD, LOGOUT
-    Route::get('/admin', function () {
-        return view('admin.dashboard', ["title" => "Dashboard"]);
-    });
+    Route::get('/admin', [DashboardController::class, 'index']);
     Route::post('/logout', [LoginController::class, 'logout']);
 
     // KOSNTRAK

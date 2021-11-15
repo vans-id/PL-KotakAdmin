@@ -36,6 +36,7 @@ class TransactionsController extends Controller
         $data = $request->validate([
             'user_id' => 'required',
             'kosntrak_id' => 'required',
+            'payment_status' => 'required',
             'start_date' => 'required|min:3|max:255',
             'end_date' => 'required|min:3|max:255',
         ]);
@@ -50,6 +51,7 @@ class TransactionsController extends Controller
         $data = $request->validate([
             'user_id' => 'required',
             'kosntrak_id' => 'required',
+            'payment_status' => 'required',
             'start_date' => 'required|min:3|max:255',
             'end_date' => 'required|min:3|max:255',
         ]);

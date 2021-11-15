@@ -15,6 +15,12 @@
             <input class="form-control mb-3" type="text" placeholder="Tanggal Checkin" name="start_date">
             <input class="form-control mb-3" type="text" placeholder="Tanggal Checkout"  name="end_date">
 
+            <select class="form-select mb-3" name="payment_status" value="0">
+              <option selected disabled>Status Bayar</option>
+              <option value="0">Pending</option>
+              <option value="1">Diterima</option>
+            </select>
+
             <button type="submit" class="btn btn-primary">Tambah</button>
             <a href="/admin/transactions" class="btn btn-outline-secondary ml-3">Kembali</a>
           </form>
