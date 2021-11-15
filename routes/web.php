@@ -22,7 +22,7 @@ Route::middleware('guest')->group(function () {
 });
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'role:admin'])->group(function () {
     // DASHBOARD, LOGOUT
     Route::get('/admin', [DashboardController::class, 'index']);
     Route::post('/logout', [LoginController::class, 'logout']);

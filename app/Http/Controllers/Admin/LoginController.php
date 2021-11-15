@@ -23,7 +23,11 @@ class LoginController extends Controller
         if (Auth::attempt($creds)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/admin');
+            if (Auth::user()->hasRole('admin')) {
+                return redirect()->intended('/admin');
+            } else {
+                Auth::logout();
+            }
         }
 
         return back()->with('loginError', 'User dan/atau password tidak terdaftar');

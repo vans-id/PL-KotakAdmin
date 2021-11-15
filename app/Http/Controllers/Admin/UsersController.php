@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -13,7 +14,7 @@ class UsersController extends Controller
     {
         return view('admin.users.index', [
             "title" => "Kosntrak",
-            "users" => User::all()
+            "users" => User::whereRoleIs(['user', 'owner'])->get()
         ]);
     }
 
@@ -32,11 +33,13 @@ class UsersController extends Controller
             'password' => 'required|max:255|min:6',
             'address' => 'required|max:255|min:6',
             'phone' => 'required|max:255|min:6',
+            'role' => 'required|min:3',
         ]);
 
         $data['password'] = bcrypt($data['password']);
 
-        User::create($data);
+        $user = User::create($data);
+        $user->attachRole($request->role);
 
         return redirect('/admin/users')->with("message", "Pengguna baru berhasil ditambahkan");
     }

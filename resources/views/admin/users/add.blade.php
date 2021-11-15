@@ -8,6 +8,8 @@
         <div class="card-body">
           <h5 class="card-title">Tambah Pengguna</h5>
 
+          <div class="dropdown-divider mt-3"></div>
+
           <form action="/admin/users" class="mt-3" method="POST">
             @csrf
             <input class="form-control mb-3" type="text" placeholder="Nama" name="name">
@@ -15,6 +17,12 @@
             <input class="form-control mb-3" type="password" placeholder="Password" name="password">
             <input class="form-control mb-3" type="text" placeholder="Alamat" name="address">
             <input class="form-control mb-3" type="number" placeholder="No Hp" name="phone">
+
+            <select class="form-select mb-5" name="role" >
+              <option selected disabled>Status pengguna</option>
+              <option value="owner">Pemilik</option>
+              <option value="user">Penyewa</option>
+            </select>
 
             <button class="btn btn-primary" type="submit">Tambah</button>
             <a href="/admin/users" class="btn btn-outline-secondary ml-3">Kembali</a>

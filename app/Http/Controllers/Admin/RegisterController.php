@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Admin\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 
 class RegisterController extends Controller
 {
@@ -17,13 +17,14 @@ class RegisterController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|max:255|min:3',
-            'email' => 'required|max:255|email:dns|unique:admins',
+            'email' => 'required|max:255|email:dns|unique:users',
             'password' => 'required|max:255|min:6',
         ]);
 
         $data['password'] = bcrypt($data['password']);
 
-        Admin::create($data);
+        $user = User::create($data);
+        $user->attachRole('admin');
 
         return redirect('/admin/login')->with("message", "Akun berhasil dibuat");
     }

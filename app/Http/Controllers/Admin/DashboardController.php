@@ -15,7 +15,7 @@ class DashboardController extends Controller
         $kosntraks = Kosntrak::all();
         $transactions = Transaction::all();
         $pendingTransactions = Transaction::where('payment_status', '=', 0);
-        $users = User::all();
+        $users = User::whereRoleIs(['user', 'owner'])->get();
 
         return view('admin.dashboard', [
             "title" => "Dashboard",

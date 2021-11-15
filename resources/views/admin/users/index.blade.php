@@ -26,8 +26,7 @@
                 <tr>
                   <th scope="col">Nama</th>
                   <th scope="col">Email</th>
-                  <th scope="col">Alamat</th>
-                  <th scope="col">No Hp</th>
+                  <th scope="col">Role</th>
                   <th scope="col"></th>
                 </tr>
               </thead>
@@ -41,10 +40,15 @@
                     {{ $user->email }} 
                   </td>
                   <td>
-                    {{ $user->address }} 
-                  </td>
-                  <td>
-                    {{ $user->phone }} 
+                    @if ($user->hasRole('owner'))
+                    <span class="badge me-1 rounded-pill bg-primary">
+                      Pemilik
+                    </span>
+                    @else
+                    <span class="badge me-1 rounded-pill bg-info">
+                      Penyewa
+                    </span>
+                    @endif
                   </td>
                   <td>
                     <form action="/admin/users/{{ $user->id }}" method="POST">
