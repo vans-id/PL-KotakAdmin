@@ -5,38 +5,23 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
-    <meta name="author" content="Łukasz Holeczek">
-    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
     <title>Kotak Admin | {{ $title }}</title>
-    <!-- Vendors styles-->
-    <link rel="stylesheet" href="{{ url('coreui/vendors/simplebar/css/simplebar.css') }}">
-    {{-- <link rel="stylesheet" href="{{ url('coreui/vendors/simplebar.css') }}"> --}}
-    <!-- Main styles for this application-->
-    <link href="{{ url('coreui/css/style.css') }}" rel="stylesheet">
-    <!-- We use those styles to show code examples, you should remove them in your application.-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism.css') }}">
-    <link href="{{ url('coreui/css/examples.css') }}" rel="stylesheet">
-    {{-- <link href="vendors/@coreui/chartjs/css/coreui-chartjs.css" rel="stylesheet"> --}}
+    {{-- Custom style --}}
+    <link rel="stylesheet" href="{{ url('custom/style.css') }}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   </head>
   <body>
-    @include('admin.partials.sidebar')
+    
+    @include('admin.partials.navbar')
 
-    <div class="wrapper d-flex flex-column min-vh-100 bg-light">
-
-      @include('admin.partials.navbar')
+    <div class="wrapper d-flex flex-column min-vh-100 bg-light pt-5">
 
       @yield('content')
 
     </div>
     
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-    <!-- CoreUI and necessary plugins-->
-    <script src="{{ url('/coreui/vendors/@coreui/coreui/js/coreui.bundle.min.js') }}"></script>
-    <script src="{{ url('/coreui/vendors/simplebar/js/simplebar.min.js') }}"></script>
-    <!-- Plugins and scripts required by this view-->
-    <script src="{{ url('/coreui/vendors/@coreui/utils/js/coreui-utils.js') }}"></script>
-    <script src="{{ url('js/main.js') }}"></script>
-    
   </body>
 </html>
