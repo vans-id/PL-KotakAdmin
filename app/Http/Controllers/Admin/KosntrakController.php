@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Admin\Kosntrak;
 use App\Http\Controllers\Controller;
@@ -12,9 +13,11 @@ class KosntrakController extends Controller
 
     public function index()
     {
+        $kosntraks = Kosntrak::with(['user'])->get();
+
         return view('admin.kosntrak.index', [
             "title" => "Kosntrak",
-            "kosntraks" => Kosntrak::all()
+            "kosntraks" => $kosntraks
         ]);
     }
 
@@ -27,6 +30,7 @@ class KosntrakController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
+            'owner_id' => 'required',
             'type' => 'required|min:3|max:255',
             'name' => 'required|min:3|max:255',
             'address' => 'required|min:3|max:255',
@@ -37,6 +41,11 @@ class KosntrakController extends Controller
             'bedroom' => 'required|min:3|max:255',
             'bathroom' => 'required|min:3|max:255',
         ]);
+
+        $owner = User::where('id', $request->owner_id);
+        if ($owner->hasRole(['user', 'admin'])) {
+            redirect('/admin/kosntrak/create')->with("message", "User tidak terdaftar sebagai pemilik");
+        }
 
         if ($request->file('image')) {
             $data['image'] = $request->file('image')->store('kosntrak-images');
@@ -63,6 +72,7 @@ class KosntrakController extends Controller
     public function update(Request $request, Kosntrak $kosntrak)
     {
         $data = $request->validate([
+            'owner_id' => 'required',
             'type' => 'required|min:3|max:255',
             'name' => 'required|min:3|max:255',
             'address' => 'required|min:3|max:255',

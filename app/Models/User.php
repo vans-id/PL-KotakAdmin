@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Admin\Kosntrak;
 use App\Models\Admin\Transaction;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laratrust\Traits\LaratrustUserTrait;
@@ -32,7 +32,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function Transactions()
+    public function kosntraks()
+    {
+        return $this->hasMany(
+            Kosntrak::class,
+            'owner_id',
+            'id'
+        );
+    }
+
+    public function transactions()
     {
         return $this->hasMany(
             Transaction::class

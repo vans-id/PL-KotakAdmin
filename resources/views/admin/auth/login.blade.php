@@ -6,11 +6,6 @@
     <link rel="stylesheet" href="../../../css/app.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <!-- Vendors styles-->
-    {{-- <link rel="stylesheet" href="{{  url('coreui/vendors/simplebar/css/simplebar.css') }}">
-    <link rel="stylesheet" href="{{  url('coreui/css/vendors/simplebar.css') }}"> --}}
-    <!-- Main styles for this application-->
-    {{-- <link href="{{  url('coreui/css/style.css') }}" rel="stylesheet"> --}}
   </head>
   <body>
     <div class="bg-light min-vh-100 d-flex flex-row align-items-center">
@@ -87,9 +82,6 @@
         </div>
       </div>
     </div>
-    <!-- CoreUI and necessary plugins-->
-    {{-- <script src="{{ url('vendors/@coreui/coreui/js/coreui.bundle.min.js') }}></script>
-    <script src="{{ url('vendors/simplebar/js/simplebar.min.js') }}></script> --}}
-
+    
   </body>
 </html>

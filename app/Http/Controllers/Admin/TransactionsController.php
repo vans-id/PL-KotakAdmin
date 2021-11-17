@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Admin\Transaction;
 use App\Http\Controllers\Controller;
@@ -40,6 +41,11 @@ class TransactionsController extends Controller
             'start_date' => 'required|min:3|max:255',
             'end_date' => 'required|min:3|max:255',
         ]);
+
+        $owner = User::where('id', $request->user_id);
+        if ($owner->hasRole(['owner', 'admin'])) {
+            return redirect('/admin/transactions/create')->with("message", "User tidak boleh terdaftar sebagai pemilik / admin");
+        }
 
         Transaction::create($data);
 

@@ -12,6 +12,13 @@
             @csrf
             @method('PUT')
 
+            @if ($kosntrak->user)
+            <input type="hidden" value="{{ $kosntrak->user->id }}" name="owner_id">
+            <input class="form-control mb-3" type="text" placeholder="Nama Pemilik"  value="{{ $kosntrak->user->name }}" disabled>
+            @else
+            <input class="form-control mb-3" type="text" placeholder="ID Pemilik" name="owner_id">
+            @endif
+
             <div class="mb-3">
               <input class="form-control @error('type') is-invalid @enderror" type="text" placeholder="Tipe (Kos/Kontrakan)" name="type" value="{{ $kosntrak->type }}">
               @error('type')

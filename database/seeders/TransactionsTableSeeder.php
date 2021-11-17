@@ -15,10 +15,10 @@ class TransactionsTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 1; $i <= 25; $i++) {
+        for ($i = 1; $i <= 5; $i++) {
             DB::table('transactions')->insert([
-                'kosntrak_id' => $i + 3,
-                'user_id' => $i + 3,
+                'kosntrak_id' => $i,
+                'user_id' => $i + 5,
                 'payment_status' => 0,
                 'start_date' => date("Y-m-d"),
                 'end_date' => date("Y-m-d")

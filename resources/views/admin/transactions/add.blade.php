@@ -2,6 +2,15 @@
 
 @section('content')
 <div class="container-fluid pb-4">
+  @if (session("message"))
+  <div class="row px-3">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      {{ session("message") }}
+      <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+  @endif
+  
   <div class="row">
     <div class="col-lg-6 col-md-8 col-12 mx-auto">
       <div class="card">

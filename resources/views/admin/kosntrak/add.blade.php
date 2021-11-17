@@ -2,6 +2,15 @@
 
 @section('content')
 <div class="container-fluid pb-4">
+  @if (session("message"))
+  <div class="row px-3">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      {{ session("message") }}
+      <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+  @endif
+  
   <div class="row">
     <div class="col-lg-6 col-md-8 col-12 mx-auto">
       <div class="card">
@@ -10,6 +19,15 @@
 
           <form action="/admin/kosntrak" method="POST" class="mt-4" enctype="multipart/form-data">
             @csrf
+            <div class="mb-3">
+              <input class="form-control @error('owner_id') is-invalid @enderror" type="text" placeholder="ID Pemilik" name="owner_id">
+              @error('owner_id')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+
             <div class="mb-3">
               <input class="form-control @error('type') is-invalid @enderror" type="text" placeholder="Tipe (Kos/Kontrakan)" name="type">
               @error('type')

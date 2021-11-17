@@ -18,6 +18,7 @@
       <thead>
         <tr>
           <th scope="col" >Nama Tempat</th>
+          <th scope="col">Pemilik</th>
           <th scope="col">Jenis</th>
           <th scope="col">Alamat</th>
           <th scope="col" style="width: 14%;">Harga Sewa</th>
@@ -30,6 +31,7 @@
           <td>
             {{ $k->name }}
           </td>
+          <td>{{ $k->user ? $k->user->name : "N/A" }}</td>
           <td>{{ strtoupper($k->type) }}</td>
           <td>
             {{ $k->address }}

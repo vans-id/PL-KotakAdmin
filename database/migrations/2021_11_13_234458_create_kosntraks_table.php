@@ -15,6 +15,7 @@ class CreateKosntraksTable extends Migration
     {
         Schema::create('kosntraks', function (Blueprint $table) {
             $table->id();
+            $table->integer('owner_id');
             $table->string('type');
             $table->string('name');
             $table->string('address');

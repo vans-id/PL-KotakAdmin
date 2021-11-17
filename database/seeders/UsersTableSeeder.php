@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
     {
         $faker = Faker::create('id_ID');
 
-        for ($i = 1; $i <= 50; $i++) {
+        for ($i = 1; $i <= 3; $i++) {
             $data = [
                 'name' => $faker->name,
                 'email' => $faker->email(),
@@ -26,6 +26,20 @@ class UsersTableSeeder extends Seeder
                 'address' => $faker->address,
                 'phone' => $faker->phoneNumber()
             ];
+
+            $user = User::create($data);
+            $user->attachRole('owner');
+        }
+
+        for ($i = 1; $i <= 9; $i++) {
+            $data = [
+                'name' => $faker->name,
+                'email' => $faker->email(),
+                'password' => $faker->password(),
+                'address' => $faker->address,
+                'phone' => $faker->phoneNumber()
+            ];
+
             $user = User::create($data);
             $user->attachRole('user');
         }
