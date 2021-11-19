@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="body flex-grow-1 px-3">
+<div class="body px-3">
   <div class="container-lg">
     <div class="row">
       <div class="col-sm-6 col-lg-3">

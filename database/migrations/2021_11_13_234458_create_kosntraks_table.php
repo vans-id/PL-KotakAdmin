@@ -15,16 +15,20 @@ class CreateKosntraksTable extends Migration
     {
         Schema::create('kosntraks', function (Blueprint $table) {
             $table->id();
-            $table->integer('owner_id');
-            $table->string('type');
-            $table->string('name');
-            $table->string('address');
-            $table->string('maps');
-            $table->string('description');
-            $table->string('price');
-            $table->string('image')->nullable();
-            $table->string('bedroom');
-            $table->string('bathroom');
+            $table->integer('user_id');
+            $table->string('jenis');
+            $table->string('nama_tempat');
+            $table->string('alamat');
+            $table->longText('maps');
+            $table->longText('keterangan');
+            $table->string('harga_sewa');
+            $table->string('gambar')->nullable();
+            $table->string('status_kamar');
+            $table->string('status_kamarmandi');
+            $table->string('wifi')->nullable();
+            $table->string('laundry')->nullable();
+            $table->integer('warung_makan');
+            $table->longText('peraturan');
             $table->timestamps();
         });
     }

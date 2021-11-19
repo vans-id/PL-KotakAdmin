@@ -1,20 +1,35 @@
-<div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
-  <div class="sidebar-brand d-none d-md-flex">
-    <h5>Admin Kotak</h5>
-  </div>
-  <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
+<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark sidenav">
+  <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+    <span class="fs-4">Sidebar</span>
+  </a>
+  <hr>
+  <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
-      <a class="nav-link" href="/admin">Dashboard</a>
+      <a href="#" class="nav-link text-white">
+        Dashboard
+      </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/admin/kosntrak">Kos dan Kontrak</a>
+    <li>
+      <a href="#" class="nav-link text-white">
+        Kos dan Kontrak
+      </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/admin/transactions">Transaksi</a>
+    <li>
+      <a href="#" class="nav-link text-white">
+        Orders
+      </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/admin/users">Pengguna</a>
+    <li>
+      <a href="#" class="nav-link text-white">
+        Products
+      </a>
+    </li>
+    <li>
+      <a href="#" class="nav-link text-white">
+        Customers
+      </a>
     </li>
   </ul>
-  <button class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></button>
+  <hr>
+  
 </div>

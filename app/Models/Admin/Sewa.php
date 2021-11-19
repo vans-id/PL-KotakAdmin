@@ -7,11 +7,9 @@ use App\Models\Admin\Kosntrak;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Transaction extends Model
+class Sewa extends Model
 {
     use HasFactory;
-
-    protected $table = "sewas";
 
     protected $fillable = [
         'kosntrak_id',
@@ -24,14 +22,18 @@ class Transaction extends Model
     public function kosntrak()
     {
         return $this->belongsTo(
-            Kosntrak::class
+            Kosntrak::class,
+            'kosntrak_id',
+            'id'
         );
     }
 
     public function user()
     {
         return $this->belongsTo(
-            User::class
+            User::class,
+            'user_id',
+            'id'
         );
     }
 }

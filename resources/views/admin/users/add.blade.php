@@ -39,8 +39,8 @@
             </div>
 
             <div class="mb-3">
-              <input class="form-control @error('address') is-invalid @enderror" type="text" placeholder="Alamat" name="address">
-              @error('address')
+              <input class="form-control @error('alamat') is-invalid @enderror" type="text" placeholder="Alamat" name="alamat">
+              @error('alamat')
               <div class="invalid-feedback">
                 {{ $message }}
               </div>
@@ -48,8 +48,8 @@
             </div>
 
             <div class="mb-3">
-              <input class="form-control @error('phone') is-invalid @enderror" type="number" placeholder="No Hp" name="phone">
-              @error('phone')
+              <input class="form-control @error('no_hp') is-invalid @enderror" type="number" placeholder="No Hp" name="no_hp">
+              @error('no_hp')
               <div class="invalid-feedback">
                 {{ $message }}
               </div>
@@ -69,13 +69,16 @@
               @enderror
             </div>
 
-            
-            
-            
-            
+            <div class="mb-3">
+              <input class="form-control @error('rekening') is-invalid @enderror" type="text" placeholder="No Rekening" name="rekening">
+              @error('rekening')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
 
             
-
             <button class="btn btn-primary" type="submit">Tambah</button>
             <a href="/admin/users" class="btn btn-outline-secondary ml-3">Kembali</a>
           </form>

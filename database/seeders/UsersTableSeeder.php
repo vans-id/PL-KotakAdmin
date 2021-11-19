@@ -22,9 +22,10 @@ class UsersTableSeeder extends Seeder
             $data = [
                 'name' => $faker->name,
                 'email' => $faker->email(),
-                'password' => $faker->password(),
-                'address' => $faker->address,
-                'phone' => $faker->phoneNumber()
+                'password' => bcrypt('test1234'),
+                'alamat' => $faker->address,
+                'no_hp' => $faker->phoneNumber(),
+                'rekening' => "BCA  012 345667"
             ];
 
             $user = User::create($data);
@@ -35,9 +36,9 @@ class UsersTableSeeder extends Seeder
             $data = [
                 'name' => $faker->name,
                 'email' => $faker->email(),
-                'password' => $faker->password(),
-                'address' => $faker->address,
-                'phone' => $faker->phoneNumber()
+                'password' => bcrypt('test1234'),
+                'alamat' => $faker->address,
+                'no_hp' => $faker->phoneNumber()
             ];
 
             $user = User::create($data);

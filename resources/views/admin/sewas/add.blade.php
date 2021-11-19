@@ -17,7 +17,7 @@
         <div class="card-body">
           <h5 class="card-title">Tambah Transaksi</h5>
 
-          <form action="/admin/transactions" method="POST" class="mt-4">
+          <form action="/admin/sewas" method="POST" class="mt-4">
             @csrf
             <div class="mb-3">
               <input class="form-control @error('user_id') is-invalid @enderror" type="text" placeholder="ID Penyewa" name="user_id">
@@ -38,8 +38,8 @@
             </div>
 
             <div class="mb-3">
-              <input class="form-control @error('start_date') is-invalid @enderror" type="text" placeholder="Tanggal Checkin" name="start_date">
-              @error('start_date')
+              <input class="form-control @error('tanggal') is-invalid @enderror" type="text" placeholder="Tanggal Checkin" name="tanggal">
+              @error('tanggal')
               <div class="invalid-feedback">
                 {{ $message }}
               </div>
@@ -47,21 +47,27 @@
             </div>
 
             <div class="mb-3">
-              <input class="form-control @error('end_date') is-invalid @enderror" type="text" placeholder="Tanggal Checkout" name="end_date">
-              @error('end_date')
-              <div class="invalid-feedback">
-                {{ $message }}
-              </div>
-              @enderror
-            </div>
-
-            <div class="mb-3">
-              <select class="form-select @error('payment_status') is-invalid @enderror" name="payment_status" value="0">
-                <option selected disabled>Status Bayar</option>
-                <option value="0">Pending</option>
+              <select class="form-select @error('status_sewa') is-invalid @enderror" name="status_sewa" value="0">
+                <option selected disabled>Status Sewa</option>
+                <option value="">Pending</option>
+                <option value="0">Ditolak</option>
                 <option value="1">Diterima</option>
               </select>
-              @error('payment_status')
+              @error('status_sewa')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+
+            <div class="mb-3">
+              <select class="form-select @error('status_bayar') is-invalid @enderror" name="status_bayar" value="0">
+                <option selected disabled>Status Bayar</option>
+                <option value=" ">Pending</option>
+                <option value="0">Ditolak</option>
+                <option value="1">Diterima</option>
+              </select>
+              @error('status_bayar')
               <div class="invalid-feedback">
                 {{ $message }}
               </div>
@@ -69,11 +75,13 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Tambah</button>
-            <a href="/admin/transactions" class="btn btn-outline-secondary ml-3">Kembali</a>
+            <a href="/admin/sewas" class="btn btn-outline-secondary ml-3">Kembali</a>
           </form>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
 @endsection

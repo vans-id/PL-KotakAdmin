@@ -30,20 +30,24 @@ class KosntrakController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'owner_id' => 'required',
-            'type' => 'required|min:3|max:255',
-            'name' => 'required|min:3|max:255',
-            'address' => 'required|min:3|max:255',
-            'maps' => 'required|min:3|max:255',
-            'description' => 'required|min:3|max:255',
-            'price' => 'required|min:3|max:255',
-            'image' => 'image|file|max:4096',
-            'bedroom' => 'required|min:3|max:255',
-            'bathroom' => 'required|min:3|max:255',
+            'user_id' => 'required',
+            'jenis' => 'required|min:3|max:255',
+            'nama_tempat' => 'required|min:3|max:255',
+            'alamat' => 'required|min:3|max:255',
+            'maps' => 'required|min:3',
+            'keterangan' => 'required|min:3|max:255',
+            'harga_sewa' => 'required|min:3|max:255',
+            'gambar' => 'image|file|max:4096',
+            'status_kamar' => 'required',
+            'status_kamarmandi' => 'required',
+            'wifi' => 'nullable|string',
+            'laundry' => 'nullable|string',
+            'warung_makan' => 'required|numeric',
+            'peraturan' => 'required|min:3',
         ]);
 
-        $owner = User::where('id', $request->owner_id);
-        if ($owner->hasRole(['user', 'admin'])) {
+        $currentuser = User::where('id', $request->user_id)->first();
+        if ($currentuser->hasRole(['user', 'admin'])) {
             redirect('/admin/kosntrak/create')->with("message", "User tidak terdaftar sebagai pemilik");
         }
 
@@ -72,20 +76,24 @@ class KosntrakController extends Controller
     public function update(Request $request, Kosntrak $kosntrak)
     {
         $data = $request->validate([
-            'owner_id' => 'required',
-            'type' => 'required|min:3|max:255',
-            'name' => 'required|min:3|max:255',
-            'address' => 'required|min:3|max:255',
-            'maps' => 'required|min:3|max:255',
-            'description' => 'required|min:3|max:255',
-            'price' => 'required|min:3|max:255',
-            'image' => 'image|file|max:4096',
-            'bedroom' => 'required|min:3|max:255',
-            'bathroom' => 'required|min:3|max:255',
+            'user_id' => 'required',
+            'jenis' => 'required|min:3|max:255',
+            'nama_tempat' => 'required|min:3|max:255',
+            'alamat' => 'required|min:3|max:255',
+            'maps' => 'required|min:3',
+            'keterangan' => 'required|min:3|max:255',
+            'harga_sewa' => 'required|min:3|max:255',
+            'gambar' => 'image|file|max:4096',
+            'status_kamar' => 'required|min:3|max:255',
+            'status_kamarmandi' => 'required|min:3|max:255',
+            'wifi' => 'nullable|string',
+            'laundry' => 'nullable|string',
+            'warung_makan' => 'required|numeric',
+            'peraturan' => 'required|min:3',
         ]);
 
-        if ($request->file('image')) {
-            $data['image'] = $request->file('image')->store('kosntrak-images');
+        if ($request->file('gambar')) {
+            $data['gambar'] = $request->file('gambar')->store('kosntrak-images');
         }
 
         Kosntrak::where('id', $kosntrak->id)

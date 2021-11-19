@@ -13,12 +13,13 @@
       @endif
       <h2>CRUD | Admin (Data Pengguna)</h2>
       <br />
-      <a class="btn btn-primary rounded-pill px-4 my-3" href="#" role="button">Tambah</a>
+      <a class="btn btn-primary rounded-pill px-4 my-3" href="/admin/users/create" role="button">Tambah</a>
       <thead>
         <tr>
           <th scope="col">Nama</th>
           <th scope="col">Email</th>
           <th scope="col">Role</th>
+          <th scope="col">No Rekening</th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -41,6 +42,9 @@
               Penyewa
             </span>
             @endif
+          </td>
+          <td>
+            {{ $user->rekening ? $user->rekening : "N/A" }} 
           </td>
           <td>
             <form action="/admin/users/{{ $user->id }}" method="POST">

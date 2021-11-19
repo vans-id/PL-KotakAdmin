@@ -4,9 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Faker\Factory as Faker;
 
-class TransactionsTableSeeder extends Seeder
+class SewaTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

@@ -20,8 +20,8 @@
           <form action="/admin/kosntrak" method="POST" class="mt-4" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
-              <input class="form-control @error('owner_id') is-invalid @enderror" type="text" placeholder="ID Pemilik" name="owner_id">
-              @error('owner_id')
+              <input class="form-control @error('user_id') is-invalid @enderror" type="text" placeholder="ID Pemilik" name="user_id">
+              @error('user_id')
               <div class="invalid-feedback">
                 {{ $message }}
               </div>
@@ -29,8 +29,12 @@
             </div>
 
             <div class="mb-3">
-              <input class="form-control @error('type') is-invalid @enderror" type="text" placeholder="Tipe (Kos/Kontrakan)" name="type">
-              @error('type')
+              <select class="form-select @error('jenis') is-invalid @enderror" name="jenis">
+                <option selected disabled>Jenis</option>
+                <option value="kos">Kos</option>
+                <option value="kontrakan">Kontrakan</option>
+              </select>
+              @error('jenis')
               <div class="invalid-feedback">
                 {{ $message }}
               </div>
@@ -38,8 +42,8 @@
             </div>
             
             <div class="mb-3">
-              <input class="form-control @error('name') is-invalid @enderror  " type="text" placeholder="Nama Tempat" name="name">
-              @error('type')
+              <input class="form-control @error('nama_tempat') is-invalid @enderror  " type="text" placeholder="Nama Tempat" name="nama_tempat">
+              @error('nama_tempat')
               <div class="invalid-feedback">
                 {{ $message }}
               </div>
@@ -47,8 +51,8 @@
             </div>
 
             <div class="mb-3">
-              <input class="form-control @error('address') is-invalid @enderror  " type="text" placeholder="Alamat" name="address">
-              @error('type')
+              <input class="form-control @error('alamat') is-invalid @enderror  " type="text" placeholder="Alamat" name="alamat">
+              @error('alamat')
               <div class="invalid-feedback">
                 {{ $message }}
               </div>
@@ -57,7 +61,7 @@
 
             <div class="mb-3">
               <input class="form-control @error('maps') is-invalid @enderror  " type="text" placeholder="Maps" name="maps">
-              @error('type')
+              @error('maps')
               <div class="invalid-feedback">
                 {{ $message }}
               </div>
@@ -66,11 +70,11 @@
 
             <div class="mb-3">
               <textarea 
-              class="form-control @error('description') is-invalid @enderror " 
+              class="form-control @error('keterangan') is-invalid @enderror " 
               type="text" 
               placeholder="Keterangan" 
-              name="description"></textarea>
-              @error('type')
+              name="keterangan"></textarea>
+              @error('keterangan')
               <div class="invalid-feedback">
                 {{ $message }}
               </div>
@@ -78,8 +82,8 @@
             </div>
 
             <div class="mb-3">
-              <input class="form-control @error('name') is-invalid @enderror " type="number" placeholder="Harga Sewa" name="price">
-              @error('type')
+              <input class="form-control @error('harga_sewa') is-invalid @enderror" type="number" placeholder="Harga Sewa" name="harga_sewa">
+              @error('harga_sewa')
               <div class="invalid-feedback">
                 {{ $message }}
               </div>
@@ -88,9 +92,9 @@
 
             <div class="mb-3">
               <label class="form-label" for="formFile">Gambar</label>
-              <input id='image' class="form-control @error('image') is-invalid @enderror" type="file" name="image" 
+              <input id='gambar' class="form-control @error('gambar') is-invalid @enderror" type="file" name="gambar" 
               onchange="previewImage()">
-              @error('type')
+              @error('gambar')
               <div class="invalid-feedback">
                 {{ $message }}
               </div>
@@ -99,8 +103,8 @@
             </div>
 
             <div class="mb-3">
-              <input class="form-control @error('bedroom') is-invalid @enderror" type="text" placeholder="Status Kamar" name="bedroom">
-              @error('type')
+              <input class="form-control @error('status_kamar') is-invalid @enderror" type="text" placeholder="Status Kamar" name="status_kamar">
+              @error('status_kamar')
               <div class="invalid-feedback">
                 {{ $message }}
               </div>
@@ -108,8 +112,48 @@
             </div>
 
             <div class="mb-3">
-              <input class="form-control @error('bathroom') is-invalid @enderror" type="text" placeholder="Status Kamar Mandi" name="bathroom">
-              @error('type')
+              <input class="form-control @error('status_kamarmandi') is-invalid @enderror" type="text" placeholder="Status Kamar Mandi" name="status_kamarmandi">
+              @error('status_kamarmandi')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+
+            <div class="mb-3">
+              <input class="form-control @error('wifi') is-invalid @enderror" type="text" placeholder="Kecepatan Wifi (Jika tidak ada)" name="wifi">
+              @error('wifi')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+
+            <div class="mb-3">
+              <input class="form-control @error('laundry') is-invalid @enderror" type="text" placeholder="Laundry" name="laundry">
+              @error('laundry')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+
+            <div class="mb-3">
+              <input class="form-control @error('warung_makan') is-invalid @enderror" type="number" placeholder="Jumlah Warung Makan" name="warung_makan">
+              @error('warung_makan')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+
+            <div class="mb-3">
+              <textarea 
+              class="form-control @error('peraturan') is-invalid @enderror " 
+              type="text" 
+              placeholder="Peraturan Kos" 
+              name="peraturan"></textarea>
+              @error('peraturan')
               <div class="invalid-feedback">
                 {{ $message }}
               </div>
@@ -127,7 +171,7 @@
 
 <script>
   function previewImage() {
-    const image = document.querySelector('#image')
+    const image = document.querySelector('#gambar')
     const imgPreview = document.querySelector('.img-preview')
 
     imgPreview.style.display = 'block'

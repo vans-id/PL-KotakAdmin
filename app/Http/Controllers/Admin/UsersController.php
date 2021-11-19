@@ -31,9 +31,10 @@ class UsersController extends Controller
             'name' => 'required|max:255|min:3',
             'email' => 'required|max:255|email:dns|unique:users',
             'password' => 'required|max:255|min:6',
-            'address' => 'required|max:255|min:6',
-            'phone' => 'required|max:255|min:6',
+            'alamat' => 'required|max:255|min:6',
+            'no_hp' => 'required|max:255|min:6',
             'role' => 'required|min:3',
+            'rekening' => 'required',
         ]);
 
         $data['password'] = bcrypt($data['password']);

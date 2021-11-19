@@ -19,7 +19,7 @@
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li><a class="dropdown-item" href="/admin">Dashboard</a></li>
               <li><a class="dropdown-item" href="/admin/kosntrak">Kos dan Kontrak</a></li>
-              <li><a class="dropdown-item" href="/admin/transactions">Transaksi</a></li>
+              <li><a class="dropdown-item" href="/admin/sewas">Transaksi</a></li>
               <li><a class="dropdown-item" href="/admin/users">Pengguna</a></li>
               <li><a class="dropdown-item" href="/admin">Profile</a></li>
               <form action="/logout" method="POST" class="d-inline">

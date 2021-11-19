@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\Admin\Kosntrak;
-use App\Models\Admin\Transaction;
+use App\Models\Admin\Sewa;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,12 +15,15 @@ class User extends Authenticatable
     use LaratrustUserTrait;
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $table = "users";
+
     protected $fillable = [
         'name',
         'email',
         'password',
-        'address',
-        'phone',
+        'alamat',
+        'no_hp',
+        'rekening',
     ];
 
     protected $hidden = [
@@ -32,19 +35,21 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function kosntraks()
+    public function kosntrak()
     {
         return $this->hasMany(
             Kosntrak::class,
-            'owner_id',
+            'user_id',
             'id'
         );
     }
 
-    public function transactions()
+    public function sewa()
     {
         return $this->hasMany(
-            Transaction::class
+            Sewa::class,
+            'user_id',
+            'id'
         );
     }
 }

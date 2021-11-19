@@ -37,9 +37,9 @@ class TransactionsController extends Controller
         $data = $request->validate([
             'user_id' => 'required',
             'kosntrak_id' => 'required',
-            'payment_status' => 'required',
-            'start_date' => 'required|min:3|max:255',
-            'end_date' => 'required|min:3|max:255',
+            'tanggal' => 'required|min:3|max:255',
+            'status_sewa' => 'required',
+            'status_bayar' => 'required',
         ]);
 
         $owner = User::where('id', $request->user_id);
@@ -57,9 +57,9 @@ class TransactionsController extends Controller
         $data = $request->validate([
             'user_id' => 'required',
             'kosntrak_id' => 'required',
-            'payment_status' => 'required',
-            'start_date' => 'required|min:3|max:255',
-            'end_date' => 'required|min:3|max:255',
+            'tanggal' => 'required|min:3|max:255',
+            'status_sewa' => 'required',
+            'status_bayar' => 'required',
         ]);
 
         Transaction::where('id', $transaction->id)

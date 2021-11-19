@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTransactionsTable extends Migration
+class CreateSewaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateTransactionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('sewas', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
             $table->integer('kosntrak_id');
             $table->timestamp('tanggal');
-            $table->string('status_sewa');
-            $table->string('status_bayar');
+            $table->string('status_sewa')->nullable();
+            $table->string('status_bayar')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateTransactionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('sewas');
     }
 }

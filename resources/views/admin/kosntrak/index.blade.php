@@ -29,15 +29,15 @@
         @foreach ($kosntraks as $k)
         <tr>
           <td>
-            {{ $k->name }}
+            {{ $k->nama_tempat }}
           </td>
           <td>{{ $k->user ? $k->user->name : "N/A" }}</td>
-          <td>{{ strtoupper($k->type) }}</td>
+          <td>{{ strtoupper($k->jenis) }}</td>
           <td>
-            {{ $k->address }}
+            {{ $k->alamat }}
           </td>
           <td>
-            Rp {{ number_format($k->price) }}
+            Rp {{ number_format($k->harga_sewa) }}
           </td>
           <td>
             <a href="/admin/kosntrak/{{ $k->id }}/edit" class="btn btn-outline-primary rounded-pill px-4">
