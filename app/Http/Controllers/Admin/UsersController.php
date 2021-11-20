@@ -34,7 +34,7 @@ class UsersController extends Controller
             'alamat' => 'required|max:255|min:6',
             'no_hp' => 'required|max:255|min:6',
             'role' => 'required|min:3',
-            'rekening' => 'required',
+            'rekening' => 'nullable',
         ]);
 
         $data['password'] = bcrypt($data['password']);

@@ -51,8 +51,8 @@ class KosntrakController extends Controller
             redirect('/admin/kosntrak/create')->with("message", "User tidak terdaftar sebagai pemilik");
         }
 
-        if ($request->file('image')) {
-            $data['image'] = $request->file('image')->store('kosntrak-images');
+        if ($request->file('gambar')) {
+            $data['gambar'] = $request->file('gambar')->store('kosntrak-images');
         }
 
         Kosntrak::create($data);
@@ -84,8 +84,8 @@ class KosntrakController extends Controller
             'keterangan' => 'required|min:3|max:255',
             'harga_sewa' => 'required|min:3|max:255',
             'gambar' => 'image|file|max:4096',
-            'status_kamar' => 'required|min:3|max:255',
-            'status_kamarmandi' => 'required|min:3|max:255',
+            'status_kamar' => 'required',
+            'status_kamarmandi' => 'required',
             'wifi' => 'nullable|string',
             'laundry' => 'nullable|string',
             'warung_makan' => 'required|numeric',

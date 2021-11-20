@@ -69,13 +69,7 @@
               </div>
 
               <div class="card col-md-5 text-white bg-primary py-5">
-                <div class="card-body text-center">
-                  <div>
-                    <h2>Buat Akun</h2>
-                    <p>Kamu bisa gunakan fitur register untuk menambah admin baru</p>
-                    <a href='/admin/register' class="btn btn-lg btn-outline-light mt-3" >Register Now!</a>
-                  </div>
-                </div>
+                {{-- Isi sesuatu disini... --}}
               </div>
             </div>
           </div>
