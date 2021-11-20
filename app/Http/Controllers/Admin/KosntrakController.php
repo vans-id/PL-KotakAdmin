@@ -103,7 +103,7 @@ class KosntrakController extends Controller
 
     public function destroy(Kosntrak $kosntrak)
     {
-        Storage::delete($kosntrak->image);
+        Storage::delete($kosntrak->gambar);
         Kosntrak::destroy($kosntrak->id);
         return redirect('/admin/kosntrak')->with("message", "Berhasil menghapus Kos/Kontrakan");
     }
